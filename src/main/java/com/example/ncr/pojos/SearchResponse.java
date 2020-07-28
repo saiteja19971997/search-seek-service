@@ -4,6 +4,13 @@ public class SearchResponse {
 	String item_name;
 	int loyalty_points;
 	String location;
+	Offers offer;
+	public Offers getOffer() {
+		return offer;
+	}
+	public void setOffer(Offers offer) {
+		this.offer = offer;
+	}
 	public String getItem_name() {
 		return item_name;
 	}
