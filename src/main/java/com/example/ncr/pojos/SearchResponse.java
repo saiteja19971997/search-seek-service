@@ -2,7 +2,7 @@ package com.example.ncr.pojos;
 
 public class SearchResponse {
 	String item_name;
-	int loyalty_points;
+	String loyalty_points;
 	String location;
 	Offers offer;
 	public Offers getOffer() {
@@ -17,10 +17,10 @@ public class SearchResponse {
 	public void setItem_name(String item_name) {
 		this.item_name = item_name;
 	}
-	public int getLoyalty_points() {
+	public String getLoyalty_points() {
 		return loyalty_points;
 	}
-	public void setLoyalty_points(int loyalty_points) {
+	public void setLoyalty_points(String loyalty_points) {
 		this.loyalty_points = loyalty_points;
 	}
 	public String getLocation() {

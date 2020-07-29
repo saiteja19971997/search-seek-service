@@ -8,6 +8,7 @@ class SearchSeekServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
+		
 	}
 
 }
