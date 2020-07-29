@@ -5,6 +5,7 @@ import java.util.concurrent.ExecutionException;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -23,7 +24,7 @@ import com.google.cloud.firestore.QuerySnapshot;
 @RestController
 public class SearchController {
 
-	@GetMapping(value = "/search/{item}")
+	@PostMapping(value = "/search/{item}")
 	public ArrayList<SearchResponse> getAllItems(@RequestBody SearchRequest searchrequest, @PathVariable String item) throws InterruptedException, ExecutionException
 	{
 		searchrequest.setItem_name(item);
