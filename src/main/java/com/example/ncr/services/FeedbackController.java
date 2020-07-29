@@ -26,6 +26,8 @@ public class FeedbackController {
 		@GetMapping(value = {"/feedback/{item}/{buy}", "/feedback/{item}/{buy}/{suggestion}"})  
 		public void getFeedback(@PathVariable String item, @PathVariable boolean buy, @PathVariable(required = false) String suggestion) throws InterruptedException, ExecutionException
 		{
+			item=item.replaceAll("%20", " ");
+			suggestion=suggestion.replaceAll("%20", " ");
 			feedbackFields feedbackk=new feedbackFields(item,suggestion,buy);
 			finalIntoDb.add(feedbackk);
 		}	
