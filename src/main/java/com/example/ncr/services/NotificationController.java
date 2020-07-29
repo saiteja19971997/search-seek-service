@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.ncr.DatabaseUtils.DatabaseUtils;
-
+import com.example.ncr.pojos.Notify;
 import com.example.ncr.pojos.Offers;
 import com.example.ncr.pojos.SearchResponse;
 import com.example.ncr.pojos.billHistory;
@@ -27,12 +27,12 @@ import com.google.cloud.firestore.Firestore;
 public class NotificationController {
 
 	@RequestMapping("/notifications/{id}")
-	public List<Offers> getNotifications(@PathVariable("id") String id) throws InterruptedException, ExecutionException {
+	public List<Notify> getNotifications(@PathVariable("id") String id) throws InterruptedException, ExecutionException {
 		DatabaseUtils dbu=new DatabaseUtils();
 		searchHistory sh=new searchHistory();
 		SearchResponse sr=new SearchResponse();
 		//Notifications n=new Notifications();
-		List<Offers> lo=new ArrayList<Offers>();
+		List<Notify> lo=new ArrayList<Notify>();
 		Firestore db = dbu.intialise();		
 		DocumentReference docRef = db.collection("Users").document(id);
 		// asynchronously retrieve the document
@@ -88,8 +88,11 @@ public class NotificationController {
 	    		if (document1.exists()) {
 	    			System.out.println(document1.getData());
 	    			sr = document1.toObject(SearchResponse.class);
-	    			lo.add(sr.getOffer());
-	    			
+	    			//lo.add(sr.getOffer());
+	    			Notify not= new Notify();
+	    			not.setItem_name(sr.getItem_name());
+	    			not.setOffer(sr.getOffer());
+	    			lo.add(not);
 	    		} else {
 	    		  System.out.println("No such document!");
 	    		}
